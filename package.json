@@ -1,0 +1,14 @@
+{
+  "name": "egor-kuznetsov-cv-website",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm run check",
+    "check": "node scripts/check-static-assets.mjs",
+    "dev": "python3 -m http.server 4173",
+    "vercel:dev": "vercel dev"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

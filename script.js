@@ -16,7 +16,11 @@ const chatInput = document.querySelector("[data-chat-input]");
 const chatSubmit = document.querySelector("[data-chat-submit]");
 const chatStatus = document.querySelector("[data-chat-status]");
 const chatSuggestions = [...document.querySelectorAll("[data-chat-suggestion]")];
-const chatApiUrl = window.CV_CHAT_API_URL || "http://127.0.0.1:8000/chat";
+const localHostnames = new Set(["localhost", "127.0.0.1", "::1"]);
+const defaultChatApiUrl = localHostnames.has(window.location.hostname)
+  ? "http://127.0.0.1:8000/chat"
+  : "/api/chat";
+const chatApiUrl = window.CV_CHAT_API_URL || defaultChatApiUrl;
 
 let isChatSending = false;
 
@@ -132,6 +136,14 @@ async function readErrorDetail(response) {
   }
 }
 
+function getChatConnectionHint() {
+  if (chatApiUrl.startsWith("/api/")) {
+    return "Проверьте, что CV_CHAT_API_URL задана в Vercel и backend доступен.";
+  }
+
+  return `Проверьте, что backend доступен по адресу ${chatApiUrl}.`;
+}
+
 async function sendChatMessage(message) {
   isChatSending = true;
   chatInput.disabled = true;
@@ -162,7 +174,7 @@ async function sendChatMessage(message) {
     pendingMessage?.remove();
     appendChatMessage(
       "error",
-      `Не удалось получить ответ. Проверьте, что backend запущен на http://127.0.0.1:8000.\n${error.message}`,
+      `Не удалось получить ответ. ${getChatConnectionHint()}\n${error.message}`,
     );
     setChatStatus("Ошибка подключения к чат-боту");
   } finally {
