@@ -855,6 +855,45 @@ textarea {
   white-space: pre-line;
 }
 
+.chat-note {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 10px;
+}
+
+.chat-note-mark {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 0.82rem;
+  font-weight: 820;
+  line-height: 1;
+}
+
+.chat-note-title {
+  margin: 0 0 3px;
+  color: var(--white);
+  font-size: 0.82rem;
+  font-weight: 760;
+  line-height: 1.35;
+}
+
+.chat-note-text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
 .chat-sources {
   margin-top: 10px;
   border-top: 1px solid var(--line-soft);
