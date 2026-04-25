@@ -1,7 +1,9 @@
 const header = document.querySelector("[data-header]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const mobileNav = document.querySelector("[data-mobile-nav]");
-const navLinks = [...document.querySelectorAll(".desktop-nav a, .mobile-nav a")];
+const navLinks = [
+  ...document.querySelectorAll(".desktop-nav a, .mobile-nav a"),
+];
 const sections = navLinks
   .map((link) => document.querySelector(link.getAttribute("href")))
   .filter(Boolean);
@@ -15,7 +17,9 @@ const chatForm = document.querySelector("[data-chat-form]");
 const chatInput = document.querySelector("[data-chat-input]");
 const chatSubmit = document.querySelector("[data-chat-submit]");
 const chatStatus = document.querySelector("[data-chat-status]");
-const chatSuggestions = [...document.querySelectorAll("[data-chat-suggestion]")];
+const chatSuggestions = [
+  ...document.querySelectorAll("[data-chat-suggestion]"),
+];
 const localHostnames = new Set(["localhost", "127.0.0.1", "::1"]);
 const defaultChatApiUrl = localHostnames.has(window.location.hostname)
   ? "http://127.0.0.1:8000/chat"
@@ -43,7 +47,10 @@ function toggleMobileNav() {
   header?.classList.toggle("is-open", !isOpen);
   mobileNav?.classList.toggle("is-open", !isOpen);
   navToggle?.setAttribute("aria-expanded", String(!isOpen));
-  navToggle?.setAttribute("aria-label", isOpen ? "Открыть меню" : "Закрыть меню");
+  navToggle?.setAttribute(
+    "aria-label",
+    isOpen ? "Открыть меню" : "Закрыть меню",
+  );
 }
 
 function scrollChatToBottom() {
@@ -168,7 +175,11 @@ async function sendChatMessage(message) {
 
     const payload = await response.json();
     pendingMessage?.remove();
-    appendChatMessage("bot", payload.answer || "Пустой ответ.", payload.sources || []);
+    appendChatMessage(
+      "bot",
+      payload.answer || "Пустой ответ.",
+      payload.sources || [],
+    );
     setChatStatus("");
   } catch (error) {
     pendingMessage?.remove();
@@ -213,7 +224,10 @@ const navObserver = new IntersectionObserver(
     }
 
     navLinks.forEach((link) => {
-      link.classList.toggle("is-active", link.getAttribute("href") === `#${visible.target.id}`);
+      link.classList.toggle(
+        "is-active",
+        link.getAttribute("href") === `#${visible.target.id}`,
+      );
     });
   },
   { rootMargin: "-24% 0px -56% 0px", threshold: [0.08, 0.18, 0.32, 0.5] },
@@ -244,7 +258,8 @@ chatSuggestions.forEach((button) => {
     }
 
     setChatOpen(true);
-    chatInput.value = button.dataset.chatSuggestion || button.textContent.trim();
+    chatInput.value =
+      button.dataset.chatSuggestion || button.textContent.trim();
     chatForm?.requestSubmit();
   });
 });
