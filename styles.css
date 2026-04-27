@@ -319,9 +319,27 @@ textarea {
     letter-spacing: 0;
 }
 
+.hero-title-row {
+    display: flex;
+    max-width: 980px;
+    align-items: center;
+    gap: clamp(18px, 3vw, 34px);
+}
+
 .hero h1 {
     max-width: 780px;
     font-size: clamp(3.6rem, 11vw, 8.8rem);
+}
+
+.hero-photo {
+    width: clamp(104px, 12vw, 176px);
+    aspect-ratio: 1;
+    flex: 0 0 auto;
+    border: 2px solid rgba(255, 255, 255, 0.72);
+    border-radius: 50%;
+    box-shadow: 0 22px 70px rgba(0, 0, 0, 0.45);
+    object-fit: cover;
+    object-position: center 34%;
 }
 
 .hero-lead {
@@ -1162,6 +1180,16 @@ textarea {
 
     .hero h1 {
         font-size: clamp(3.15rem, 16vw, 4.9rem);
+    }
+
+    .hero-title-row {
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .hero-photo {
+        width: clamp(72px, 22vw, 96px);
+        margin-top: 6px;
     }
 
     .hero-lead {
