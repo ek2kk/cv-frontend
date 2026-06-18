@@ -173,6 +173,47 @@ textarea {
     color: var(--white);
 }
 
+.header-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.language-switcher {
+    display: inline-grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 90px;
+    min-width: 90px;
+    gap: 2px;
+    padding: 3px;
+    border: 1px solid var(--line-soft);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.language-switcher button {
+    min-width: 0;
+    height: 34px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 780;
+    line-height: 1;
+    padding: 0;
+    transition:
+        background 160ms ease,
+        color 160ms ease;
+}
+
+.language-switcher button:hover,
+.language-switcher button.is-active {
+    background: rgba(255, 255, 255, 0.13);
+    color: var(--white);
+}
+
 .nav-toggle {
     display: none;
     width: 44px;
@@ -1166,6 +1207,16 @@ textarea {
 
     .brand-text {
         display: none;
+    }
+
+    .language-switcher {
+        width: 78px;
+        min-width: 78px;
+    }
+
+    .language-switcher button {
+        height: 32px;
+        font-size: 0.72rem;
     }
 
     .hero {

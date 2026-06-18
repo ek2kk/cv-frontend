@@ -39,16 +39,43 @@
                 <a href="#contacts">Контакты</a>
             </nav>
 
-            <button
-                class="nav-toggle"
-                type="button"
-                aria-label="Открыть меню"
-                aria-expanded="false"
-                data-nav-toggle
-            >
-                <span></span>
-                <span></span>
-            </button>
+            <div class="header-actions">
+                <div
+                    class="language-switcher"
+                    role="group"
+                    aria-label="Выбор языка"
+                    data-language-switcher
+                >
+                    <button
+                        class="is-active"
+                        type="button"
+                        aria-pressed="true"
+                        data-language-button
+                        data-language="ru"
+                    >
+                        RU
+                    </button>
+                    <button
+                        type="button"
+                        aria-pressed="false"
+                        data-language-button
+                        data-language="en"
+                    >
+                        EN
+                    </button>
+                </div>
+
+                <button
+                    class="nav-toggle"
+                    type="button"
+                    aria-label="Открыть меню"
+                    aria-expanded="false"
+                    data-nav-toggle
+                >
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </header>
 
         <nav
